@@ -8,18 +8,42 @@ Widget CustomTextField({
 }) {
   return Column(
     children: [
-      Container(
+      Align(
         alignment: Alignment.centerLeft,
-        child: Text(
-          title!,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
+        child: RichText(
+          textAlign: TextAlign.start,
+          text: TextSpan(
+            style: TextStyle(
+              fontFamily: 'Lato',
+              fontSize: 12,
+              color: Color(0xff484848),
+            ),
+            children: [
+              TextSpan(
+                text: title!,
+                style: TextStyle(
+                  fontFamily: 'Inter',
+                  fontSize: 12,
+                  fontWeight: FontWeight.w100,
+                  color: Color(0xff484848),
+                ),
+              ),
+              TextSpan(
+                text: '*',
+                style: TextStyle(
+                  fontFamily: 'Inter',
+                  fontSize: 12,
+                  fontWeight: FontWeight.w100,
+                  color:  Color(0xffcd3434),
+                ),
+              ),
+            ],
           ),
         ),
       ),
+      // TextField
       Container(
-        margin: const EdgeInsets.symmetric(vertical: 10),
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        padding: const EdgeInsets.only(bottom: 10),
         child: TextFormField(
           controller: controller,
           maxLines: maxLines,

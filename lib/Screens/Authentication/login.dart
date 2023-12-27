@@ -27,30 +27,62 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    double baseWidth = 390;
+    double fem = MediaQuery.of(context).size.width / baseWidth;
+    double ffem = fem * 0.97;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
           'Kahi',
-          style: TextStyle(fontWeight: FontWeight.w700),
+          style: TextStyle(fontFamily: 'Inter', fontWeight :FontWeight.w700),
         ),
+        actions: [IconButton(onPressed: (){ }, icon: Icon(Icons.help))],
+        toolbarHeight: 50,
       ),
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
             child: Container(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.symmetric(horizontal:16),
               child: Column(
                 children: [
+                  Container(
+                      // login7zV (1:340)
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Login',
+                        style: TextStyle(
+                          fontFamily: 'Inter',
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xff1d1d1d),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical: 7),
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        // enteryourregisteredphonenumber (1:341)
+                        'Enter your registered phone number to log in',
+                        style: TextStyle(
+                          fontFamily: 'Inter',
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xff484848),
+                        ),
+                      ),
+                    ),
                   CustomTextField(
-                      title: 'email*',
+                      title: 'email',
                       controller: _email,
                       hint: 'Type your email'),
                   CustomTextField(
-                      title: 'password*',
+                      title: 'password',
                       controller: _password,
                       hint: 'Type your password'),
                   SizedBox(
-                    height: 320,
+                    height: 390,
                   ),
                   Consumer<AuthProvider>(builder: (context, auth, child) {
                     WidgetsBinding.instance!.addPostFrameCallback((_) {
@@ -60,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                       }
                     });
                     return CustomButton(
-                      text: 'Login',
+                      text: 'Continue',
                       tap: () {
                         if (_email.text.isEmpty || _password.text.isEmpty) {
                           showMessage(
@@ -81,27 +113,6 @@ class _LoginPageState extends State<LoginPage> {
                       context: context,
                     );
                   }),
-                  GestureDetector(
-                    onTap: () {
-                      PageNavigator(context: context)
-                          .nextPage(page: RegisterPage());
-                    },
-                    child: Container(
-                      height: 48,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 15, horizontal: 16),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(40),
-                          border: Border.all(color: Colors.blueGrey)),
-                      width: MediaQuery.of(context).size.width,
-                      child: Text(
-                        'Register Instead',
-                        style: TextStyle(color: Colors.blueGrey, fontSize: 18),
-                      ),
-                    ),
-                  )
                 ],
               ),
             ),

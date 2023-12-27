@@ -13,13 +13,13 @@ Widget CustomButton({
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 16),
       alignment: Alignment.center,
       decoration: BoxDecoration(
-          color: status == false ? Colors.blueGrey : Colors.white,
+          color: status == false ? Color(0xff1b4965) : Colors.white,
           borderRadius: BorderRadius.circular(40)),
       width: MediaQuery.of(context!).size.width,
       child: Text(
         status == false ? text! : 'Please wait...',
         style: TextStyle(
-            color: status == false ? Colors.white : Colors.blueGrey,
+            color: status == false ? Colors.white : Color(0xff1b4965),
             fontSize: 18),
       ),
     ),

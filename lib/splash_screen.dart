@@ -1,4 +1,5 @@
 import 'package:ekahi/Screens/Authentication/login.dart';
+import 'package:ekahi/Screens/onboarding.dart';
 import 'package:ekahi/Utils/routes.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void navigate() {
     Future.delayed(const Duration(seconds: 3), () {
-      PageNavigator(context: context).nextPageOnly(page: LoginPage());
+      PageNavigator(context: context).nextPage(page: OnboardingPage());
     });
   }
 }

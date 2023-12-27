@@ -34,6 +34,8 @@ class _RegisterPageState extends State<RegisterPage> {
           'Kahi',
           style: TextStyle(fontWeight: FontWeight.w700),
         ),
+        actions: [IconButton(onPressed: (){ }, icon: Icon(Icons.help))],
+        toolbarHeight: 50,
       ),
       body: CustomScrollView(
         slivers: [
@@ -59,35 +61,14 @@ class _RegisterPageState extends State<RegisterPage> {
                       controller: _confirm_password,
                       hint: 'Re-type your password'),
                   SizedBox(
-                    height: 125,
+                    height: 310,
                   ),
                   CustomButton(
-                    text: 'Register',
+                    text: 'Continue',
                     tap: () {},
                     status: false,
                     context: context,
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      PageNavigator(context: context)
-                          .nextPage(page: LoginPage());
-                    },
-                    child: Container(
-                      height: 48,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 15, horizontal: 16),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(40),
-                          border: Border.all(color: Colors.blueGrey)),
-                      width: MediaQuery.of(context).size.width,
-                      child: Text(
-                        'Login Instead',
-                        style: TextStyle(color: Colors.blueGrey, fontSize: 18),
-                      ),
-                    ),
-                  )
                 ],
               ),
             ),

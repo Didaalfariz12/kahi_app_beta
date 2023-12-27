@@ -39,11 +39,11 @@ class AuthProvider extends ChangeNotifier {
     try {
       http.Response req =
           await http.post(Uri.parse(url), body: json.encode(body));
-
+        print('here');
       if (req.statusCode == 200 || req.statusCode == 201) {
         final res = json.decode(req.body);
 
-        print(res.body);
+        print('here');
         _isLoading = false;
         _resMessage = res['message'];
         notifyListeners();
@@ -80,21 +80,18 @@ class AuthProvider extends ChangeNotifier {
       'password': password,
     });
 
-    print(body);
+    final request = jsonDecode(body);
 
     try {
-      final req = await http.post(Uri.parse(url), body: body);
-      print(req);
+      http.Response req = await http.post(Uri.parse(url), body: request);
       if (req.statusCode == 200 || req.statusCode == 201) {
         final res = jsonDecode(req.body);
-        print(res.body);
+        print(res);
         _isLoading = false;
         _resMessage = res['token'];
         notifyListeners();
       } else {
-        final res = json.decode(req.body);
-
-        print(res.body);
+        print(req.body);
         _isLoading = false;
         notifyListeners();
       }
